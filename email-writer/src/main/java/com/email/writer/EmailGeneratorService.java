@@ -47,11 +47,9 @@ public class EmailGeneratorService {
                 .bodyToMono(String.class)
                 .block();
 
-//        extract response 
+//        extract response
         return extractResponseContent(response);
     }
-
-
 
 
     private String extractResponseContent(String response) {
@@ -78,9 +76,7 @@ public class EmailGeneratorService {
         prompt.append("Do not provide multiple options, explanations, or alternatives. ");
         prompt.append("Please don't generate the subject line. ");
 
-
-
-        if(emailRequest.getTone()!= null && !emailRequest.getTone().isEmpty())
+        if(emailRequest.getTone() != null && !emailRequest.getTone().isEmpty())
                 prompt.append("Use ").append(emailRequest.getTone()).append("tone.");
         prompt.append("/n Original mail: /n").append(emailRequest.getEmailContent());
 
